@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://dibwugrj7kpq7"]
+
+[ext_resource type="Script" uid="uid://x84rogmqlaom" path="res://scripts/prefabs/inventory_item.gd" id="1_cfj26"]
+[ext_resource type="Texture2D" uid="uid://cf2b8gjj7gpdh" path="res://icon.svg" id="1_lqrws"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cfj26"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cfj26"]
+bg_color = Color(0, 0, 0, 0.576471)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6fgxn"]
+bg_color = Color(0, 0, 0, 0.894118)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dv7w5"]
+bg_color = Color(0, 0, 0, 0.576471)
+
+[node name="InventoryItem" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cfj26")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+offset_right = 90.0
+offset_bottom = 90.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cfj26")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cfj26")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6fgxn")
+theme_override_styles/normal = SubResource("StyleBoxFlat_dv7w5")
+icon_alignment = 1
+expand_icon = true
+
+[node name="icon" type="TextureRect" parent="Button"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -35.0
+offset_right = 35.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_lqrws")
+expand_mode = 1
+stretch_mode = 4
+
+[connection signal="gui_input" from="Button" to="." method="_on_button_gui_input"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

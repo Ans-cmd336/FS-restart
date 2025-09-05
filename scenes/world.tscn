@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://gok7oe452jmq"]
+
+[ext_resource type="Texture2D" uid="uid://cj6crr8q7x3x3" path="res://assets/grids/tiles.png" id="1_nnsk1"]
+[ext_resource type="PackedScene" uid="uid://cgnuy4374gtkn" path="res://scenes/player.tscn" id="2_rwgxs"]
+[ext_resource type="PackedScene" uid="uid://b41rc2hbh2qpv" path="res://scenes/prefabs/pickables/wakky_takky.tscn" id="3_4wyf3"]
+[ext_resource type="Texture2D" uid="uid://cf2b8gjj7gpdh" path="res://icon.svg" id="4_k0juu"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rwgxs"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_4wyf3"]
+sky_material = SubResource("ProceduralSkyMaterial_rwgxs")
+
+[sub_resource type="Environment" id="Environment_k0juu"]
+background_mode = 2
+sky = SubResource("Sky_4wyf3")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rwgxs"]
+albedo_texture = ExtResource("1_nnsk1")
+uv1_triplanar = true
+
+[node name="world" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_k0juu")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+visible = false
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+use_collision = true
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_rwgxs")
+
+[node name="player" parent="." instance=ExtResource("2_rwgxs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.507945, 0)
+
+[node name="wakky_takky" parent="." instance=ExtResource("3_4wyf3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52, -5.18302)
+icon = ExtResource("4_k0juu")

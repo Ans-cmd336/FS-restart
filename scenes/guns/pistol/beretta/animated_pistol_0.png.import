@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://dq5lcs3faamp3"
+path.etc2="res://.godot/imported/animated_pistol_0.png-b9dc37892d6e865805b0bc36df7f21b2.etc2.ctex"
+metadata={
+"imported_formats": ["etc2_astc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "c3374b4b9767afec66e6767c2ff82ec5"
+}
+
+[deps]
+
+source_file="res://scenes/guns/pistol/beretta/animated_pistol_0.png"
+dest_files=["res://.godot/imported/animated_pistol_0.png-b9dc37892d6e865805b0bc36df7f21b2.etc2.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

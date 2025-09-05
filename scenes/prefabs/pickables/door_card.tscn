@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://cjdvhxbf882m"]
+
+[ext_resource type="Script" uid="uid://b5ywy0pp8dk7w" path="res://scripts/prefabs/door_card.gd" id="1_bwhdm"]
+[ext_resource type="Texture2D" uid="uid://m2jxohvexgnt" path="res://assets/meshes/demo_player/cloth_albedo.jpg" id="2_pbi23"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hmoji"]
+albedo_color = Color(0.905882, 0.470588, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dl2qb"]
+material = SubResource("StandardMaterial3D_hmoji")
+size = Vector3(0.1, 0.01, 0.15)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dl2qb"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_hmoji"]
+material = SubResource("StandardMaterial3D_dl2qb")
+text = "CARD"
+font_size = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dl2qb"]
+size = Vector3(0.1, 0.01, 0.15)
+
+[node name="door_card" type="Node3D"]
+script = ExtResource("1_bwhdm")
+card_code = "a"
+icon = ExtResource("2_pbi23")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+mesh = SubResource("BoxMesh_dl2qb")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 1.50996e-07, 1.58406e-15, 0, -4.37114e-08, 0.24, 1.50996e-07, 1, 1.04907e-08, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("TextMesh_hmoji")
+
+[node name="door_card" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="door_card"]
+shape = SubResource("BoxShape3D_dl2qb")

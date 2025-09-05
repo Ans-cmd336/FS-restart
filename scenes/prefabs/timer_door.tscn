@@ -1,0 +1,142 @@
+[gd_scene load_steps=10 format=3 uid="uid://botrcuf6x46rh"]
+
+[ext_resource type="Script" uid="uid://btsna31utswpy" path="res://scripts/prefabs/timer_door.gd" id="1_hgo6c"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_vwy6r"]
+size = Vector3(0.1, 2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vwy6r"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hgo6c"]
+material = SubResource("StandardMaterial3D_vwy6r")
+size = Vector3(0.2, 0.1, 2.2)
+
+[sub_resource type="Animation" id="Animation_hgo6c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_dm6lo"]
+resource_name = "close_door"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -1.55), Vector3(0, 0, -0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 1.55), Vector3(0, 0, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_vwy6r"]
+resource_name = "door_open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.5), Vector3(0, 0, -1.55)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.5), Vector3(0, 0, 1.55)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dm6lo"]
+_data = {
+&"RESET": SubResource("Animation_hgo6c"),
+&"close_door": SubResource("Animation_dm6lo"),
+&"door_open": SubResource("Animation_vwy6r")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vwy6r"]
+size = Vector3(0.1, 2, 2)
+
+[node name="TimerDoor" type="Node3D"]
+script = ExtResource("1_hgo6c")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+mesh = SubResource("BoxMesh_vwy6r")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+mesh = SubResource("BoxMesh_vwy6r")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
+mesh = SubResource("BoxMesh_hgo6c")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.05, 0)
+mesh = SubResource("BoxMesh_hgo6c")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1.05)
+mesh = SubResource("BoxMesh_hgo6c")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 1.05)
+mesh = SubResource("BoxMesh_hgo6c")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dm6lo")
+}
+
+[node name="card_door" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="card_door"]
+shape = SubResource("BoxShape3D_vwy6r")

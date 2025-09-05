@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1a17oovsxc1h"]
+
+[ext_resource type="Script" uid="uid://cl025nlfad6a4" path="res://scripts/prefabs/pickables/useless_items.gd" id="1_f5hcu"]
+[ext_resource type="Texture2D" uid="uid://b1s0llwlrxwfw" path="res://assets/ui/player ui/fire_btn.png" id="2_3dkku"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_f5hcu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f5hcu"]
+
+[node name="badge" type="Node3D"]
+script = ExtResource("1_f5hcu")
+icon = ExtResource("2_3dkku")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_f5hcu")
+
+[node name="Area3D" type="Area3D" parent="." groups=["pickable"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_f5hcu")

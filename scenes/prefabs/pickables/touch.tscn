@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://bwbpka5boc7b3"]
+
+[ext_resource type="Script" uid="uid://d00xv4ml8accr" path="res://scripts/prefabs/pickables/touch.gd" id="1_ctsrr"]
+[ext_resource type="Texture2D" uid="uid://5my6oj5ucs5c" path="res://assets/meshes/demo_player/player/Textures/BasicMotions_DummyMale-BaseColor.png" id="2_ggbio"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a3oa8"]
+albedo_color = Color(0, 0, 0, 1)
+metallic_specular = 0.7
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_a3oa8"]
+material = SubResource("StandardMaterial3D_a3oa8")
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ggbio"]
+material = SubResource("StandardMaterial3D_a3oa8")
+top_radius = 0.1
+bottom_radius = 0.05
+height = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_a3oa8"]
+height = 0.6
+radius = 0.1
+
+[node name="touch" type="Node3D"]
+script = ExtResource("1_ctsrr")
+icon = ExtResource("2_ggbio")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_a3oa8")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.294436, 0)
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_ggbio")
+
+[node name="Area3D" type="Area3D" parent="." groups=["pickable"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0519512, 0)
+shape = SubResource("CylinderShape3D_a3oa8")

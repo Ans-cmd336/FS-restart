@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://di6wf6olmfn7f"]
+
+[ext_resource type="Script" uid="uid://bhll7r3mgy5qp" path="res://scripts/prefabs/input_btn.gd" id="1_m2kaw"]
+[ext_resource type="Texture2D" uid="uid://cikue4lnaibha" path="res://assets/ui/player ui/crouch.png" id="2_xpoqi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sp1ru"]
+bg_color = Color(0.133333, 0.133333, 0.133333, 0.568627)
+corner_radius_top_left = 120
+corner_radius_top_right = 120
+corner_radius_bottom_right = 120
+corner_radius_bottom_left = 120
+
+[node name="Input_btn" type="Panel"]
+offset_right = 200.0
+offset_bottom = 200.0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(100, 100)
+theme_override_styles/panel = SubResource("StyleBoxFlat_sp1ru")
+script = ExtResource("1_m2kaw")
+txt = ExtResource("2_xpoqi")
+
+[node name="btn_texture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(60, 60)
+texture = ExtResource("2_xpoqi")
+expand_mode = 1
